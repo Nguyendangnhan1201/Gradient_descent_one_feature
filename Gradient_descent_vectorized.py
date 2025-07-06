@@ -12,8 +12,18 @@ for j in range (datasize):
     xtrain[j]=float(input("Enter value x for the data set:"))
     ytrain[j]=float(input("Enter the y value corresponding with previous x:"))
     plt.plot(xtrain[j], ytrain[j], 'ro')
-u=np.mean(xtrain)
-v=np.mean(ytrain)
+xtrain_copy=xtrain
+ytrain_copy=ytrain
+# Scale dataset:
+x_mean = np.mean(xtrain)
+x_std = np.std(xtrain)
+xtrain= (xtrain - x_mean) / x_std
+y_mean = np.mean(ytrain)
+y_std = np.std(ytrain)
+ytrain=(ytrain - y_mean) / y_std
+# Choose start parameters:
+u=1
+v=1
 # Gradient descent algorithm:
 def descent(a,b,step):
   maxloop=0
@@ -34,15 +44,18 @@ def descent(a,b,step):
        maxloop=maxloop+1
   return a,b
 # I want to run the descent multiple times to make changes to the steps and prevent overload:
-w,t=descent(u,v,0.0025) # I start at a random a,b value for the descent with step of 0.0025
+w,t=descent(u,v,0.0025)
 for m in range (4):
    w,t=descent(w, t, 0.0015)
 para1,para2= descent(w,t,0.0005)
+# Find real parameters:
+para1_true= para1*(y_std / x_std)
+para2_true=y_mean-para1_true*x_mean
 # print out the function:
-print(f"The linear regression function is: {para1}x+{para2}")
+print(f"The linear regression function is: {para1_true}x+{para2_true}")
 # draw:
-x=np.linspace(np.min(xtrain)-2, np.max(xtrain)+2, 500*datasize) 
-y=para1*x+para2
+x=np.linspace(np.min(xtrain_copy)-2, np.max(xtrain_copy)+2, 500*(int(abs(np.max(xtrain_copy)-np.min(xtrain_copy))))) 
+y=para1_true*x+para2_true
 plt.plot(x, y, label='Linear regression', color='blue') #plot the function
 plt.title("Linear Regression (Gradient Descent)")
 plt.show()
