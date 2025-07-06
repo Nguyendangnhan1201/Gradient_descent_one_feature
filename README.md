@@ -23,6 +23,7 @@
 - The dataset to train should be small to be convenient for the code run and prevents overload.
 - It is easier to run online on Google Colab, Jupiter Lab,... instead on local computer if yours is not strong enough.
 - The step can be adjusted, but ensure not to make it too large or small ( usually <1 and >0 is good).
+- I also updated the algorithm using Z-score normalization in order to partly help run the code with greater dataset on local computers.
 - Feel free to contact me through my Email if you have any questions or want to make it better! I would also love to learn more to improve this algorithm.
 
   
