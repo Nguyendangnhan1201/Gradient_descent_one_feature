@@ -48,3 +48,4 @@ y=para1*x+para2
 plt.plot(x, y, label='Linear regression', color='blue') #plot the function
 plt.title("Linear Regression (Gradient Descent)")
 plt.show()
+
