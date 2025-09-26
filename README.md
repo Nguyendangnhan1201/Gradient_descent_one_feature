@@ -1,4 +1,4 @@
-# Gradient_descent_one_feature
+# Linear_regression_one_feature
 # 1. Some information you need to know about Gradient descent and this project:
 ## Linear Regression for 1 feature:
 - Definition: An important technique to predict a result in Machine Learning is linear regression. In short, it can be described as the most fixed function that stay close to all data points on graph. For linear regression of 1 feature, the function has an input of just one varible and usually appear as a straight line: f(x)=ax+b. In this repositary, I will focus on figuring out this type of linear regression.
